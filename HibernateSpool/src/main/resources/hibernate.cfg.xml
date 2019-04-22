@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<!-- <session-factory name="hibernate.SessionFactory">  -->
+	
+	<session-factory > 	
+
+        <!--  
+        
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+       	<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="hibernate.connection.url">jdbc:sqlserver://127.0.0.1;DatabaseName=saveriodb</property>
+        -->
+        
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/saveriodb?useTimezone=true&amp;serverTimezone=UTC</property> 
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        <property name="hibernate.connection.username">saverio2</property>
+        <property name="hibernate.connection.password">saverio2</property>
+       
+       <!-- CREAZIONE TABELLE -->
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        
+        <property name="show_sql">false</property>
+        <property name="format_sql">true</property>
+        <property name="hbm2ddl.auto">update </property>
+        <property name="hibernate.connection.autocommit">false</property> 
+       
+	
+		<!-- JNDI Datasource
+		<property name="hibernate.connection.datasource">java:comp/env/jdbc/csf</property>
+		<property name="show_sql">false</property> -->
+		<!--  <property name="hibernate.hbm2ddl.auto">update</property> --> 
+		
+		<!-- HIBERNATE SEARCH PROPERITES 
+		<property name="hibernate.search.default.directory_provider">org.hibernate.search.store.FSDirectoryProvider</property>
+		<property name="hibernate.search.default.indexBase">C:/Hawk2/Hawk2_report/Leasing/indexes</property>
+		-->
+		<!-- Mappings -->	
+<!-- 		<mapping class="it.csf.entity.bean.AccessLog" />
+		<mapping class="it.csf.entity.bean.AccessLogWs" />
+		<mapping class="it.csf.entity.bean.AccessLogWsCerved"></mapping>
+		<mapping class="it.csf.entity.bean.AdditionalInfo" />
+		<mapping class="it.csf.entity.bean.AdditionalName" />
+		<mapping class="it.csf.entity.bean.AdditionalNameChk" />
+		<mapping class="it.csf.entity.bean.AdditionalNameChkTypology" />
+		<mapping class="it.csf.entity.bean.AdditionalNameTypology" />
+		<mapping class="it.csf.entity.bean.Adv" />
+		<mapping class="it.csf.entity.bean.AdvType" />
+		<mapping class="it.csf.entity.bean.AdvValue" />
+			
+		<mapping class="it.csf.entity.bean.AnagConnection" />
+		<mapping class="it.csf.entity.bean.AnagHistory" />
+		<mapping class="it.csf.entity.bean.AnagNote" />	
+		<mapping class="it.csf.entity.bean.AnagStatusLog" />	
+		<mapping class="it.csf.entity.bean.AnagSubjectType" />
+		<mapping class="it.csf.entity.bean.ApplicationSuite" />
+		
+		<mapping class="it.csf.entity.bean.AttachmentDataBlk" />
+		<mapping class="it.csf.entity.bean.AttachmentParam" />
+		<mapping class="it.csf.entity.bean.AuthorityDocuments" />
+		<mapping class="it.csf.entity.bean.BlackList" />
+		<mapping class="it.csf.entity.bean.BlackListsLog" />
+		<mapping class="it.csf.entity.bean.ColType" />
+		
+		<mapping class="it.csf.entity.bean.Condition" />
+		<mapping class="it.csf.entity.bean.Country" />
+		<mapping class="it.csf.entity.bean.Currency" />
+		
+		<mapping class="it.csf.entity.bean.DossierAnag" />
+		<mapping class="it.csf.entity.bean.DossierAnagConnection" />
+		<mapping class="it.csf.entity.bean.DossierCerved" />
+		<mapping class="it.csf.entity.bean.DossierCervedError"></mapping>
+		<mapping class="it.csf.entity.bean.DossierCervedLayouts" />
+ 		<mapping class="it.csf.entity.bean.DossierCervedElements" /> 
+		<mapping class="it.csf.entity.bean.DossierVisius" />
+		<mapping class="it.csf.entity.bean.DossierVisiusLayouts" />
+		<mapping class="it.csf.entity.bean.DossierCervedSections" /> 
+		<mapping class="it.csf.entity.bean.DossierConnectionPosition" />
+		<mapping class="it.csf.entity.bean.DossierFromBudget" />
+		<mapping class="it.csf.entity.bean.DossierIndirectLink"></mapping>
+		<mapping class="it.csf.entity.bean.DossierInfo" />
+		<mapping class="it.csf.entity.bean.DossierInfoType" />
+		<mapping class="it.csf.entity.bean.DossierLocalUnit" />
+		<mapping class="it.csf.entity.bean.DossierMonitoring"></mapping>
+		<mapping class="it.csf.entity.bean.DossierPosition"></mapping>
+		<mapping class="it.csf.entity.bean.DossierPositionType" />
+		<mapping class="it.csf.entity.bean.DossierPositionTypology"></mapping>
+		<mapping class="it.csf.entity.bean.DossierPrint" />
+		<mapping class="it.csf.entity.bean.DossierProgressiveReport" />
+		<mapping class="it.csf.entity.bean.Gestore" />
+		<mapping class="it.csf.entity.bean.HawkUser" />
+		<mapping class="it.csf.entity.bean.Intermediary" />
+		<mapping class="it.csf.entity.bean.IntermediaryConfiguration" />
+		<mapping class="it.csf.entity.bean.IntermediarySuite" />		
+		<mapping class="it.csf.entity.bean.MailConfiguration" />
+		<mapping class="it.csf.entity.bean.MailMixup" />
+		<mapping class="it.csf.entity.bean.MailModel" />
+		<mapping class="it.csf.entity.bean.MailParameter" />
+		<mapping class="it.csf.entity.bean.MailSummary" />
+		<mapping class="it.csf.entity.bean.MatchingConfig" />
+		<mapping class="it.csf.entity.bean.Menu" />
+		<mapping class="it.csf.entity.bean.PasswordPolicies"></mapping>
+		<mapping class="it.csf.entity.bean.PrintConfiguration" />
+		<mapping class="it.csf.entity.bean.ProcessBatch" />
+		<mapping class="it.csf.entity.bean.ProcessBatchDefinition" />
+		<mapping class="it.csf.entity.bean.ProcessBatchError" />
+		<mapping class="it.csf.entity.bean.ProcessBatchExecutionError" />		
+		<mapping class="it.csf.entity.bean.ProcessBatchJob" />
+		<mapping class="it.csf.entity.bean.ProcessMode" />
+		<mapping class="it.csf.entity.bean.ProcessType" />
+		<mapping class="it.csf.entity.bean.Product" />
+		<mapping class="it.csf.entity.bean.Provincia" />
+		<mapping class="it.csf.entity.bean.Rapp" />
+		<mapping class="it.csf.entity.bean.Regione" />
+		<mapping class="it.csf.entity.bean.Report" />
+		<mapping class="it.csf.entity.bean.ReportsDefinition" />
+		<mapping class="it.csf.entity.bean.ReportsDefinitionsIntermediary" />
+		<mapping class="it.csf.entity.bean.RiskProfile" />
+		<mapping class="it.csf.entity.bean.RiskProfileAssigned" />
+		<mapping class="it.csf.entity.bean.RiskProfileClass" />
+		<mapping class="it.csf.entity.bean.RiskProfileClassValue" />
+		<mapping class="it.csf.entity.bean.RiskProfileConfiguration" />
+		<mapping class="it.csf.entity.bean.RiskProfileGroup" />
+		<mapping class="it.csf.entity.bean.RiskProfileHistory" />
+		<mapping class="it.csf.entity.bean.RiskProfileHistorySquare" />
+		<mapping class="it.csf.entity.bean.RiskProfileParameter" />
+		<mapping class="it.csf.entity.bean.RiskProfileRelations" />
+		<mapping class="it.csf.entity.bean.RiskProfileRelationsParms" />
+		<mapping class="it.csf.entity.bean.RiskProfileWeight" />
+		<mapping class="it.csf.entity.bean.Role" />
+		<mapping class="it.csf.entity.bean.SaleNetwork" />
+		<mapping class="it.csf.entity.bean.SaleNetworkConnection" />
+		<mapping class="it.csf.entity.bean.TabAbiCabLocalita" />
+		<mapping class="it.csf.entity.bean.TabAteco3" />
+		<mapping class="it.csf.entity.bean.TabAteco6" />
+		<mapping class="it.csf.entity.bean.TabAtecoClassiClienti" />
+		<mapping class="it.csf.entity.bean.TabAtecoClassiFornitori" />
+		<mapping class="it.csf.entity.bean.TabAtecoClientiFornitori" />
+		<mapping class="it.csf.entity.bean.TabBeniCategorie" />
+		<mapping class="it.csf.entity.bean.TabBeniClassi" />
+		<mapping class="it.csf.entity.bean.TabBeniClassiCategorie" />
+		<mapping class="it.csf.entity.bean.TabContatori" />
+		<mapping class="it.csf.entity.bean.TableName" />
+		<mapping class="it.csf.entity.bean.TabRae" />
+		<mapping class="it.csf.entity.bean.TabSae" />
+		<mapping class="it.csf.entity.bean.TabSettSint" />
+		<mapping class="it.csf.entity.bean.Typology" />
+		<mapping class="it.csf.entity.bean.UserIntermediary" />
+		<mapping class="it.csf.entity.bean.UserPasswordHistory"></mapping>
+		<mapping class="it.csf.entity.bean.Lot"></mapping>
+		<mapping class="it.csf.entity.bean.LotService"></mapping>
+		<mapping class="it.csf.entity.bean.WfCheckListConfiguration"></mapping>
+		<mapping class="it.csf.entity.bean.WfCheckListSection"></mapping>
+		<mapping class="it.csf.entity.bean.WfEvent"></mapping>
+ 		<mapping class="it.csf.entity.bean.WfLot"></mapping>
+ 		<mapping class="it.csf.entity.bean.WfLotLevel"></mapping>
+ 		<mapping class="it.csf.entity.bean.WfProcess"></mapping>
+		<mapping class="it.csf.entity.bean.WfResult"></mapping>
+		<mapping class="it.csf.entity.bean.WfService"></mapping>
+		<mapping class="it.csf.entity.bean.QmfReport"></mapping>
+		<mapping class="it.csf.entity.bean.QmfUser"></mapping>
+		<mapping class="it.csf.entity.bean.RequiredFields"></mapping>
+		<mapping class="it.csf.entity.bean.OCFList" /> 
+		<mapping class="it.csf.entity.bean.OAMList" />
+		<mapping class="it.csf.entity.bean.RUIList" />
+		<mapping class="it.csf.entity.bean.AnagBrokerList" /> 
+		<mapping class="it.csf.entity.bean.AnagBrokerTemp" />  
+		<mapping class="it.hawk.dbtools.entities.OAMList" />
+		  -->
+		
+		<mapping class="it.hawk.dbtools.entities.AnagConnection" />
+		<mapping class="it.hawk.dbtools.entities.Rapp" />
+		
+		<mapping class="it.hawk.dbtools.entities.AnagBrokerTraining" />
+		<mapping class="it.hawk.dbtools.entities.Anag" />	
+		<mapping class="it.hawk.dbtools.entities.Comune" />
+		<mapping class="it.hawk.dbtools.entities.Provincia" />
+		<mapping class="it.hawk.dbtools.entities.DocumentType" />
+		<mapping class="it.hawk.dbtools.entities.Regione" />
+		<mapping class="it.hawk.dbtools.entities.Country" />
+		<mapping class="it.hawk.dbtools.entities.AttachmentData" />
+			
+	</session-factory>
+</hibernate-configuration>
